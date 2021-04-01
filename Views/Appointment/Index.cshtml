@@ -1,0 +1,27 @@
+﻿<div class="row">
+    <div class="container">
+        @if (User.IsInRole(AppointmentScheduling.Helper.Helper.Admin)) // always specify the namespace DONT FORGET
+        {
+            <div class="form-group row col-2" id="divDoctorList">
+                <label>Select Doctor</label>
+
+                <!--HTML HELPERS-->
+                <!--This is the way that was done in ASP.NET MVC Framework-->
+                @Html.DropDownList("doctorId", new SelectList(ViewBag.Doctors, "ID", "Name"), new { @class = "form-control select2" })
+
+
+                <!--TAG HELPERS-->
+                <!--This is the right way to do in ASP.NET MVC CORE-->
+                @*<select asp-items='@new SelectList(ViewBag.Doctors,  "ID", "Name")' class="form-control select2">
+
+                    </select>*@
+
+            </div>
+        }
+        <div id="calendar">
+
+        </div>
+    </div>
+</div>
+
+<partial name="_AddEditAppointment"/>
